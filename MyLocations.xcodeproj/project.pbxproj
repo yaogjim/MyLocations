@@ -23,6 +23,7 @@
 		65197DC518C297F7005C8E50 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65197DC318C297F7005C8E50 /* InfoPlist.strings */; };
 		65197DC718C297F7005C8E50 /* MyLocationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65197DC618C297F7005C8E50 /* MyLocationsTests.m */; };
 		65197DD118C2AF1A005C8E50 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65197DD018C2AF1A005C8E50 /* CoreLocation.framework */; };
+		652FF2AE18C3080F0036E413 /* LocationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FF2AD18C3080F0036E413 /* LocationDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		65197DC418C297F7005C8E50 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		65197DC618C297F7005C8E50 /* MyLocationsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyLocationsTests.m; sourceTree = "<group>"; };
 		65197DD018C2AF1A005C8E50 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		652FF2AC18C3080F0036E413 /* LocationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailsViewController.h; sourceTree = "<group>"; };
+		652FF2AD18C3080F0036E413 /* LocationDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				65197DA718C297F7005C8E50 /* AppDelegate.h */,
 				65197DA818C297F7005C8E50 /* AppDelegate.m */,
 				65197DAA18C297F7005C8E50 /* Main.storyboard */,
+				652FF2AC18C3080F0036E413 /* LocationDetailsViewController.h */,
+				652FF2AD18C3080F0036E413 /* LocationDetailsViewController.m */,
 				65197DAD18C297F7005C8E50 /* CurrentLocationViewController.h */,
 				65197DAE18C297F7005C8E50 /* CurrentLocationViewController.m */,
 				65197DB018C297F7005C8E50 /* SecondViewController.h */,
@@ -262,6 +267,7 @@
 				65197DA918C297F7005C8E50 /* AppDelegate.m in Sources */,
 				65197DAF18C297F7005C8E50 /* CurrentLocationViewController.m in Sources */,
 				65197DA518C297F7005C8E50 /* main.m in Sources */,
+				652FF2AE18C3080F0036E413 /* LocationDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +476,7 @@
 				65197DCC18C297F7005C8E50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65197DCD18C297F7005C8E50 /* Build configuration list for PBXNativeTarget "MyLocationsTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +485,7 @@
 				65197DCF18C297F7005C8E50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
