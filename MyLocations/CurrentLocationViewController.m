@@ -69,7 +69,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-  NSLog(@"didFailWithError %@", error);
+  // NSLog(@"didFailWithError %@", error);
 
   if (error.code == kCLErrorLocationUnknown) {
     return;
@@ -86,7 +86,7 @@
 {
   CLLocation *newLocation = [locations lastObject];
 
-  NSLog(@"didUpdateLocations %@", newLocation);
+  // NSLog(@"didUpdateLocations %@", newLocation);
 
   if ([newLocation.timestamp timeIntervalSinceNow] < -5.0) {
     return;
@@ -108,7 +108,7 @@
     [self updateLabels];
 
     if (newLocation.horizontalAccuracy <= _locationManager.desiredAccuracy) {
-      NSLog(@"*** We're done!");
+      // NSLog(@"*** We're done!");
       [self stopLocationManager];
       [self configureGetButton];
 
@@ -118,12 +118,12 @@
     }
 
     if(!_performingReverseGeocoding) {
-      NSLog(@"*** Going to geocode");
+      // NSLog(@"*** Going to geocode");
 
       _performingReverseGeocoding = YES;
 
       [_geocoder reverseGeocodeLocation:_location completionHandler:^(NSArray *placemarks, NSError *error) {
-        NSLog (@"*** Found placemarks: %@, error: %@", placemarks, error);
+        // NSLog (@"*** Found placemarks: %@, error: %@", placemarks, error);
 
         _lastGeocodingError = error;
         if(error == nil && [placemarks count] > 0) {
@@ -139,7 +139,7 @@
   } else if (distance < 1.0) {
     NSTimeInterval timeInterval = [newLocation.timestamp timeIntervalSinceDate:_location.timestamp];
     if(timeInterval > 10) {
-      NSLog(@"*** Force done!");
+      // NSLog(@"*** Force done!");
       [self stopLocationManager];
       [self updateLabels];
       [self configureGetButton];
@@ -229,7 +229,7 @@
 
 - (void)didTimeOut:(id)obj
 {
-  NSLog(@"*** Time out");
+  // NSLog(@"*** Time out");
 
   if (_location == nil) {
     [self stopLocationManager];
