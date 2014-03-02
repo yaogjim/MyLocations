@@ -32,6 +32,7 @@
 {
   [super viewDidLoad];
   [self updateLabels];
+  [self configureGetButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,35 +43,16 @@
 
 - (IBAction)getLocation:(id)sender
 {
-  [self startLocationManager];
-  [self updateLabels];
-}
+  if(_updatingLocation) {
+    [self stopLocationManager];
+  } else {
+    _location = nil;
+    _lastLocationError = nil;
 
-#pragma mark - CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-  NSLog(@"didFailWithError %@", error);
-
-  if (error.code == kCLErrorLocationUnknown) {
-    return;
+    [self startLocationManager];
   }
-
-  [self stopLocationManager];
-  _lastLocationError = error;
-
   [self updateLabels];
-}
-
-- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-  CLLocation *newLocation = [locations lastObject];
-
-  NSLog(@"didUpdateLocations %@", newLocation);
-
-  _lastLocationError = nil;
-  _location = newLocation;
-  [self updateLabels];
+  [self configureGetButton];
 }
 
 - (void) updateLabels
@@ -104,6 +86,15 @@
   }
 }
 
+- (void)configureGetButton
+{
+  if (_updatingLocation) {
+    [self.getButton setTitle:@"Stop" forState:UIControlStateNormal];
+  } else {
+    [self.getButton setTitle:@"Get My Location" forState:UIControlStateNormal];
+  }
+}
+
 - (void)startLocationManager
 {
   if ([CLLocationManager locationServicesEnabled]) {
@@ -123,5 +114,51 @@
     _updatingLocation = NO;
   }
 }
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+  NSLog(@"didFailWithError %@", error);
+
+  if (error.code == kCLErrorLocationUnknown) {
+    return;
+  }
+
+  [self stopLocationManager];
+  _lastLocationError = error;
+
+  [self updateLabels];
+  [self configureGetButton];
+}
+
+- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+  CLLocation *newLocation = [locations lastObject];
+
+  NSLog(@"didUpdateLocations %@", newLocation);
+
+  if ([newLocation.timestamp timeIntervalSinceNow] < -5.0) {
+    return;
+  }
+
+  if (newLocation.horizontalAccuracy < 0) {
+    return;
+  }
+
+  if (_location == nil || _location.horizontalAccuracy > newLocation.horizontalAccuracy) {
+
+    _lastLocationError = nil;
+    _location = newLocation;
+    [self updateLabels];
+
+    if (newLocation.horizontalAccuracy <= _locationManager.desiredAccuracy) {
+      NSLog(@"*** We're done!");
+      [self stopLocationManager];
+      [self configureGetButton];
+    }
+  }
+}
+
 
 @end
