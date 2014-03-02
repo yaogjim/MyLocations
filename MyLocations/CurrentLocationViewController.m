@@ -42,9 +42,8 @@
 
 - (IBAction)getLocation:(id)sender
 {
-  _locationManager.delegate = self;
-  _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-  [_locationManager startUpdatingLocation];
+  [self startLocationManager];
+  [self updateLabels];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -68,6 +67,8 @@
   CLLocation *newLocation = [locations lastObject];
 
   NSLog(@"didUpdateLocations %@", newLocation);
+
+  _lastLocationError = nil;
   _location = newLocation;
   [self updateLabels];
 }
@@ -101,6 +102,17 @@
     }
     self.messageLabel.text = statusMessage;
   }
+}
+
+- (void)startLocationManager
+{
+  if ([CLLocationManager locationServicesEnabled]) {
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    [_locationManager startUpdatingLocation];
+    _updatingLocation = YES;
+  }
+
 }
 
 - (void)stopLocationManager
