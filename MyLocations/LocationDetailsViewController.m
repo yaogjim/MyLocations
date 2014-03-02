@@ -47,13 +47,40 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  self.descriptionTextView.text = @"";
+  self.categoryLabel.text = @"";
+
+  self.latitudeLabel.text = [NSString stringWithFormat: @"%.8f", self.coordinate.latitude];
+  self.longitudeLabel.text = [NSString stringWithFormat: @"%.8f", self.coordinate.longitude];
+
+  if (self.placemark != nil) {
+    self.addressLabel.text = [self stringFromPlacemark:self.placemark];
+  } else {
+    self.addressLabel.text = @"No Address Found";
+  }
+
+  self.dateLabel.text = [self formatDate:[NSDate date]];
+}
+
+- (NSString *)stringFromPlacemark:(CLPlacemark *)thePlacemark
+{
+  return [NSString stringWithFormat:@"%@ %@, %@, %@ %@, %@",
+          thePlacemark.subThoroughfare, thePlacemark.thoroughfare,
+          thePlacemark.locality, thePlacemark.administrativeArea,
+          thePlacemark.postalCode, thePlacemark.country];
+}
+
+- (NSString *)formatDate:(NSDate *)theDate
+{
+  static NSDateFormatter * formatter = nil;
+  if(formatter == nil) {
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+  }
+  return [formatter stringFromDate:theDate];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,81 +89,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDelegate
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+  if (indexPath.section == 0 && indexPath.row == 0){
+    return 88;
+  } else if (indexPath.section == 2 && indexPath.row == 2){
+
+    CGRect rect = CGRectMake(100, 10, 205, 10000);
+    self.addressLabel.frame = rect;
+    [self.addressLabel sizeToFit];
+
+    rect.size.height = self.addressLabel.frame.size.height;
+    self.addressLabel.frame = rect;
+
+    return self.addressLabel.frame.size.height + 20;
+  } else {
+    return 44;
+  }
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
-
 @end
