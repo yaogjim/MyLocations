@@ -25,6 +25,7 @@
 		65197DD118C2AF1A005C8E50 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65197DD018C2AF1A005C8E50 /* CoreLocation.framework */; };
 		652FF2AE18C3080F0036E413 /* LocationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FF2AD18C3080F0036E413 /* LocationDetailsViewController.m */; };
 		652FF2B118C3EA9F0036E413 /* CategoryPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FF2B018C3EA9F0036E413 /* CategoryPickerViewController.m */; };
+		652FF2B418C4303D0036E413 /* HudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FF2B318C4303D0036E413 /* HudView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		652FF2AD18C3080F0036E413 /* LocationDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailsViewController.m; sourceTree = "<group>"; };
 		652FF2AF18C3EA9F0036E413 /* CategoryPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryPickerViewController.h; sourceTree = "<group>"; };
 		652FF2B018C3EA9F0036E413 /* CategoryPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryPickerViewController.m; sourceTree = "<group>"; };
+		652FF2B218C4303D0036E413 /* HudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudView.h; sourceTree = "<group>"; };
+		652FF2B318C4303D0036E413 /* HudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HudView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				65197DAA18C297F7005C8E50 /* Main.storyboard */,
 				652FF2AC18C3080F0036E413 /* LocationDetailsViewController.h */,
 				652FF2AD18C3080F0036E413 /* LocationDetailsViewController.m */,
+				652FF2B218C4303D0036E413 /* HudView.h */,
+				652FF2B318C4303D0036E413 /* HudView.m */,
 				65197DAD18C297F7005C8E50 /* CurrentLocationViewController.h */,
 				65197DAE18C297F7005C8E50 /* CurrentLocationViewController.m */,
 				65197DB018C297F7005C8E50 /* SecondViewController.h */,
@@ -272,6 +277,7 @@
 				65197DA918C297F7005C8E50 /* AppDelegate.m in Sources */,
 				65197DAF18C297F7005C8E50 /* CurrentLocationViewController.m in Sources */,
 				65197DA518C297F7005C8E50 /* main.m in Sources */,
+				652FF2B418C4303D0036E413 /* HudView.m in Sources */,
 				652FF2B118C3EA9F0036E413 /* CategoryPickerViewController.m in Sources */,
 				652FF2AE18C3080F0036E413 /* LocationDetailsViewController.m in Sources */,
 			);
