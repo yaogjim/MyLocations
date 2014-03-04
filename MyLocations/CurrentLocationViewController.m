@@ -74,6 +74,7 @@
     LocationDetailsViewController *controller = (LocationDetailsViewController *)navigationController.topViewController;
     controller.coordinate = _location.coordinate;
     controller.placemark = _placemark;
+    controller.managedObjectContext = self.managedObjectContext;
   }
 }
 

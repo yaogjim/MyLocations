@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CurrentLocationViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,8 +21,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    return YES;
+  UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+
+  CurrentLocationViewController *currentLocationViewController = (CurrentLocationViewController *)tabBarController.viewControllers[0];
+
+  currentLocationViewController.managedObjectContext = self.managedObjectContext;
+  return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
