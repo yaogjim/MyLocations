@@ -7,7 +7,8 @@
 //
 
 #import "LocationsViewController.h"
-#import "location.h"
+#import "Location.h"
+#import "LocationCell.h"
 
 @interface LocationsViewController ()
 
@@ -57,19 +58,32 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Location"];
+  [self configureCell:cell atIndexPath:indexPath];
+  return cell;
+}
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+  LocationCell *locationCell = (LocationCell *)cell;
   Location *location = _locations[indexPath.row];
 
-  UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:100];
-  descriptionLabel.text = location.locationDescription;
+  if ([location.locationDescription length] > 0) {
+    locationCell.descriptionLabel.text = location.locationDescription;
+  } else {
+    locationCell.descriptionLabel.text = @"(No Description)";
+  }
 
-  UILabel *addressLabel = (UILabel *)[cell viewWithTag:101];
-  addressLabel.text = [NSString stringWithFormat:@"%@ %@, %@",
+  if (location.placemark != nil) {
+    locationCell.addressLabel.text = [NSString stringWithFormat:@"%@ %@, %@",
                        location.placemark.subThoroughfare,
                        location.placemark.thoroughfare,
                        location.placemark.locality];
-    
-  return cell;
+  } else {
+    locationCell.addressLabel.text = [NSString stringWithFormat: @"Lat: %.8f, Long: %.8f",
+                                      [location.latitude doubleValue],
+                                      [location.longitude doubleValue]];
+  }
+
 }
 
 @end
