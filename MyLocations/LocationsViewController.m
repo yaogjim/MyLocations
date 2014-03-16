@@ -9,6 +9,7 @@
 #import "LocationsViewController.h"
 #import "Location.h"
 #import "LocationCell.h"
+#import "locationDetailsViewController.h"
 
 @interface LocationsViewController ()
 
@@ -60,6 +61,21 @@
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Location"];
   [self configureCell:cell atIndexPath:indexPath];
   return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:@"EditLocation"]) {
+    UINavigationController *navigationController = segue.destinationViewController;
+
+    LocationDetailsViewController *controller = (LocationDetailsViewController *)navigationController.topViewController;
+
+    controller.managedObjectContext = self.managedObjectContext;
+
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    Location *location = _locations[indexPath.row];
+    controller.locationToEdit = location;
+  }
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
