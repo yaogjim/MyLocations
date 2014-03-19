@@ -50,7 +50,12 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+
+  [NSFetchedResultsController deleteCacheWithName:@"Locations"];
+
   [self performFetch];
+
+  self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)performFetch
@@ -73,6 +78,22 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if (editingStyle == UITableViewCellEditingStyleDelete) {
+    Location * location = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+    [self.managedObjectContext deleteObject:location];
+
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+      FATAL_CORE_DATA_ERROR(error);
+      return;
+    }
+  }
 }
 
 #pragma mark - UITableViewDataSource
