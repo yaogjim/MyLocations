@@ -29,9 +29,11 @@
                                               inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
 
-    NSSortDescriptor *sortDescriptor =
+    NSSortDescriptor *sortDescriptor1 =
+      [NSSortDescriptor sortDescriptorWithKey:@"category" ascending:YES];
+    NSSortDescriptor *sortDescriptor2 =
       [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    [fetchRequest setSortDescriptors:@[sortDescriptor1, sortDescriptor2]];
 
     [fetchRequest setFetchBatchSize:20];
 
@@ -39,7 +41,7 @@
         [[NSFetchedResultsController alloc]
           initWithFetchRequest:fetchRequest
           managedObjectContext:self.managedObjectContext
-          sectionNameKeyPath:nil
+          sectionNameKeyPath:@"category"
           cacheName:@"Locations"];
 
     _fetchedResultsController.delegate = self;
@@ -97,6 +99,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 #pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return [[self.fetchedResultsController sections] count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+  id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+
+  return [sectionInfo name];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
