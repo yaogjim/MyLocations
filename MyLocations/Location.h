@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 
 
-@interface Location : NSManagedObject
+@interface Location : NSManagedObject <MKAnnotation>
 
 @property (nonatomic, retain) NSString * category;
 @property (nonatomic, retain) NSDate * date;

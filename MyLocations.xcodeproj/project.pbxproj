@@ -22,6 +22,8 @@
 		65197DC518C297F7005C8E50 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65197DC318C297F7005C8E50 /* InfoPlist.strings */; };
 		65197DC718C297F7005C8E50 /* MyLocationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65197DC618C297F7005C8E50 /* MyLocationsTests.m */; };
 		65197DD118C2AF1A005C8E50 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65197DD018C2AF1A005C8E50 /* CoreLocation.framework */; };
+		651AFB3918DEA15000986021 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651AFB3818DEA15000986021 /* MapKit.framework */; };
+		651AFB3C18DEA21C00986021 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 651AFB3B18DEA21C00986021 /* MapViewController.m */; };
 		652E5A5518C4E86A00E63C36 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652E5A5418C4E86A00E63C36 /* CoreData.framework */; };
 		652E5A5E18C4E90C00E63C36 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 652E5A5C18C4E90C00E63C36 /* DataModel.xcdatamodeld */; };
 		652E5A6418C55A6100E63C36 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 652E5A6318C55A6100E63C36 /* Location.m */; };
@@ -63,6 +65,9 @@
 		65197DC418C297F7005C8E50 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		65197DC618C297F7005C8E50 /* MyLocationsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyLocationsTests.m; sourceTree = "<group>"; };
 		65197DD018C2AF1A005C8E50 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		651AFB3818DEA15000986021 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		651AFB3A18DEA21C00986021 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		651AFB3B18DEA21C00986021 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		652E5A5418C4E86A00E63C36 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		652E5A5D18C4E90C00E63C36 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		652E5A6218C55A6100E63C36 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
@@ -84,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651AFB3918DEA15000986021 /* MapKit.framework in Frameworks */,
 				652E5A5518C4E86A00E63C36 /* CoreData.framework in Frameworks */,
 				65197DD118C2AF1A005C8E50 /* CoreLocation.framework in Frameworks */,
 				65197D9B18C297F7005C8E50 /* CoreGraphics.framework in Frameworks */,
@@ -127,6 +133,7 @@
 		65197D9718C297F7005C8E50 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				651AFB3818DEA15000986021 /* MapKit.framework */,
 				652E5A5418C4E86A00E63C36 /* CoreData.framework */,
 				65197DD018C2AF1A005C8E50 /* CoreLocation.framework */,
 				65197D9818C297F7005C8E50 /* Foundation.framework */,
@@ -160,6 +167,8 @@
 				652E5A5C18C4E90C00E63C36 /* DataModel.xcdatamodeld */,
 				652E5A6218C55A6100E63C36 /* Location.h */,
 				652E5A6318C55A6100E63C36 /* Location.m */,
+				651AFB3A18DEA21C00986021 /* MapViewController.h */,
+				651AFB3B18DEA21C00986021 /* MapViewController.m */,
 			);
 			path = MyLocations;
 			sourceTree = "<group>";
@@ -300,6 +309,7 @@
 				652FF2B418C4303D0036E413 /* HudView.m in Sources */,
 				652FF2B118C3EA9F0036E413 /* CategoryPickerViewController.m in Sources */,
 				652FF2AE18C3080F0036E413 /* LocationDetailsViewController.m in Sources */,
+				651AFB3C18DEA21C00986021 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

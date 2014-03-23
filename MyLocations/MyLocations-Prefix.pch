@@ -15,6 +15,7 @@
   #import <Foundation/Foundation.h>
   #import <CoreLocation/CoreLocation.h>
   #import <CoreData/Coredata.h>
+  #import <MapKit/MapKit.h>
 #endif
 
 extern NSString * const ManagedObjectContextSaveDidFailNotification;
