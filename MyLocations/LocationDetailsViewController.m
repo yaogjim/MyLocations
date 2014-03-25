@@ -11,7 +11,7 @@
 #import "HudView.h"
 #import "Location.h"
 
-@interface LocationDetailsViewController () <UITextViewDelegate>
+@interface LocationDetailsViewController () <UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UITextView *descriptionTextView;
 @property (nonatomic, weak) IBOutlet UILabel *categoryLabel;
@@ -183,6 +183,39 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)takePhoto
+{
+  UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+  imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+  imagePicker.delegate = self;
+  imagePicker.allowsEditing = YES;
+  [self presentViewController: imagePicker animated: YES completion:nil];
+}
+
+- (void)choosePhotoFromLibrary
+{
+  UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+  imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+  imagePicker.delegate = self;
+  imagePicker.allowsEditing = YES;
+  [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void)showPhotoMenu
+{
+  if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:@"Take Photo", @"Choose From Library", nil];
+    [actionSheet showInView:self.view];
+  } else {
+    [self choosePhotoFromLibrary];
+  }
+}
+
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -217,6 +250,9 @@
 {
   if (indexPath.section == 0 && indexPath.row == 0) {
     [self.descriptionTextView becomeFirstResponder];
+  } else if (indexPath.section == 1 && indexPath.row == 0) {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self showPhotoMenu];
   }
 }
 
@@ -232,6 +268,29 @@
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
   _descriptionText = textView.text;
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+{
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+  if(buttonIndex == 0){
+    [self takePhoto];
+  } else if (buttonIndex == 1) {
+    [self choosePhotoFromLibrary];
+  }
 }
 
 @end
