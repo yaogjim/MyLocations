@@ -473,12 +473,12 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Map" id="htw-R9-6bi">
-                                        <barButtonItem key="leftBarButtonItem" title="Location" id="4zf-3D-DB4">
+                                        <barButtonItem key="leftBarButtonItem" image="Pin" id="4zf-3D-DB4">
                                             <connections>
                                                 <action selector="showLocations" destination="Q9b-jg-g7z" id="Aqj-GQ-2MO"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="User" id="lkW-8N-qDp">
+                                        <barButtonItem key="rightBarButtonItem" image="User" id="lkW-8N-qDp">
                                             <connections>
                                                 <action selector="showUser" destination="Q9b-jg-g7z" id="p44-YL-0wd"/>
                                             </connections>
@@ -506,7 +506,9 @@
     <resources>
         <image name="Locations" width="30" height="30"/>
         <image name="Map" width="30" height="30"/>
+        <image name="Pin" width="24" height="24"/>
         <image name="Tag" width="30" height="30"/>
+        <image name="User" width="24" height="24"/>
     </resources>
     <color key="tintColor" red="1" green="0.93333333333333335" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -515,6 +517,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hV3-NB-ISZ"/>
+        <segue reference="Y3a-UA-4fL"/>
     </inferredMetricsTieBreakers>
 </document>
