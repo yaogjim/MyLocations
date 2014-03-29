@@ -10,6 +10,7 @@
 #import "Location.h"
 #import "LocationCell.h"
 #import "locationDetailsViewController.h"
+#import "UIImage+Resize.h"
 
 @interface LocationsViewController ()<NSFetchedResultsControllerDelegate>
 
@@ -152,6 +153,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
   UIImage *image = nil;
   if ([location hasPhoto]) {
     image = [location photoImage];
+    if (image != nil) {
+      image = [image resizedImageWithBounds:CGSizeMake(52, 52)];
+    }
   }
   locationCell.photoImageView.image = image;
 }

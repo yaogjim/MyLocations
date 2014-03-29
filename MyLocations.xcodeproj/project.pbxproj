@@ -31,6 +31,7 @@
 		652FF2B118C3EA9F0036E413 /* CategoryPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FF2B018C3EA9F0036E413 /* CategoryPickerViewController.m */; };
 		652FF2B418C4303D0036E413 /* HudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FF2B318C4303D0036E413 /* HudView.m */; };
 		659F5DA818CD768E00B05B6A /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 659F5DA718CD768E00B05B6A /* LocationsViewController.m */; };
+		65AF5DCF18E691F00065333C /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AF5DCE18E691F00065333C /* UIImage+Resize.m */; };
 		65F2B3EE18D56E5500198256 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F2B3ED18D56E5500198256 /* LocationCell.m */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,8 @@
 		652FF2B318C4303D0036E413 /* HudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HudView.m; sourceTree = "<group>"; };
 		659F5DA618CD768E00B05B6A /* LocationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
 		659F5DA718CD768E00B05B6A /* LocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
+		65AF5DCD18E691F00065333C /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		65AF5DCE18E691F00065333C /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		65F2B3EC18D56E5500198256 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		65F2B3ED18D56E5500198256 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +155,8 @@
 				65F2B3EC18D56E5500198256 /* LocationCell.h */,
 				65F2B3ED18D56E5500198256 /* LocationCell.m */,
 				65197DAA18C297F7005C8E50 /* Main.storyboard */,
+				65AF5DCD18E691F00065333C /* UIImage+Resize.h */,
+				65AF5DCE18E691F00065333C /* UIImage+Resize.m */,
 				659F5DA618CD768E00B05B6A /* LocationsViewController.h */,
 				659F5DA718CD768E00B05B6A /* LocationsViewController.m */,
 				652FF2AC18C3080F0036E413 /* LocationDetailsViewController.h */,
@@ -304,6 +309,7 @@
 				65F2B3EE18D56E5500198256 /* LocationCell.m in Sources */,
 				659F5DA818CD768E00B05B6A /* LocationsViewController.m in Sources */,
 				65197DAF18C297F7005C8E50 /* CurrentLocationViewController.m in Sources */,
+				65AF5DCF18E691F00065333C /* UIImage+Resize.m in Sources */,
 				652E5A6418C55A6100E63C36 /* Location.m in Sources */,
 				65197DA518C297F7005C8E50 /* main.m in Sources */,
 				652FF2B418C4303D0036E413 /* HudView.m in Sources */,
