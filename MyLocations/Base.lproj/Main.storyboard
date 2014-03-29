@@ -348,10 +348,10 @@
             </objects>
             <point key="canvasLocation" x="2873" y="186"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--My Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
             <objects>
-                <tabBarController id="8YX-ce-x5E" sceneMemberID="viewController">
+                <tabBarController id="8YX-ce-x5E" customClass="MyTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="JQR-rB-NYL">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -368,10 +368,10 @@
             </objects>
             <point key="canvasLocation" x="114" y="186"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--My Navigation Controlle View Controller-->
         <scene sceneID="0Bx-IH-Sy1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nE5-wb-mGv" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nE5-wb-mGv" customClass="MyNavigationControlleViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x0e-PK-9MS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -515,6 +515,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Y3a-UA-4fL"/>
+        <segue reference="hV3-NB-ISZ"/>
     </inferredMetricsTieBreakers>
 </document>
