@@ -149,6 +149,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                                       [location.longitude doubleValue]];
   }
 
+  UIImage *image = nil;
+  if ([location hasPhoto]) {
+    image = [location photoImage];
+  }
+  locationCell.photoImageView.image = image;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
