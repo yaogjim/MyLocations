@@ -60,7 +60,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Oqz-Ux-NyM">
-                                <rect key="frame" x="103" y="390" width="114" height="30"/>
+                                <rect key="frame" x="103" y="478" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Get My Location">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -161,6 +161,10 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="kiU-Fe-TH9">
+                                                    <rect key="frame" x="123" y="10" width="144" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -284,8 +288,10 @@
                         <outlet property="categoryLabel" destination="XAj-dc-eHi" id="KSU-nd-vkf"/>
                         <outlet property="dateLabel" destination="ybC-Wz-VZP" id="jIK-UP-uoq"/>
                         <outlet property="descriptionTextView" destination="nh3-nn-ymz" id="wa8-uu-vQK"/>
+                        <outlet property="imageView" destination="kiU-Fe-TH9" id="8VL-T9-zya"/>
                         <outlet property="latitudeLabel" destination="RFc-aH-2Zv" id="QNp-wW-zTg"/>
                         <outlet property="longitudeLabel" destination="EPP-cv-7L5" id="jZ6-zR-YNf"/>
+                        <outlet property="photoLabel" destination="WPd-0n-nkW" id="aeg-gR-OaA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PaJ-7X-sQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
