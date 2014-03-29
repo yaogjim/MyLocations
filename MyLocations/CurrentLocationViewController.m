@@ -11,6 +11,7 @@
 #import "NSMutableString+AddText.h"
 
 @interface CurrentLocationViewController ()
+  <UITabBarControllerDelegate>
 
 @end
 
@@ -40,6 +41,10 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+
+  self.tabBarController.delegate = self;
+  self.tabBarController.tabBar.translucent = NO;
+
   [self updateLabels];
   [self configureGetButton];
 }
@@ -266,6 +271,15 @@
     [self updateLabels];
     [self configureGetButton];
   }
+}
+
+#pragma mark - UITabBarControllerDelegate
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController
+  shouldSelectViewController:(UIViewController *)viewController
+{
+  tabBarController.tabBar.translucent = (viewController != self);
+  return YES;
 }
 
 @end
