@@ -32,6 +32,7 @@
 		652FF2B418C4303D0036E413 /* HudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FF2B318C4303D0036E413 /* HudView.m */; };
 		659F5DA818CD768E00B05B6A /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 659F5DA718CD768E00B05B6A /* LocationsViewController.m */; };
 		65AF5DCF18E691F00065333C /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AF5DCE18E691F00065333C /* UIImage+Resize.m */; };
+		65AF5DD818E7329A0065333C /* NSMutableString+AddText.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AF5DD718E7329A0065333C /* NSMutableString+AddText.m */; };
 		65F2B3EE18D56E5500198256 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F2B3ED18D56E5500198256 /* LocationCell.m */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,8 @@
 		659F5DA718CD768E00B05B6A /* LocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
 		65AF5DCD18E691F00065333C /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		65AF5DCE18E691F00065333C /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		65AF5DD618E7329A0065333C /* NSMutableString+AddText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+AddText.h"; sourceTree = "<group>"; };
+		65AF5DD718E7329A0065333C /* NSMutableString+AddText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+AddText.m"; sourceTree = "<group>"; };
 		65F2B3EC18D56E5500198256 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		65F2B3ED18D56E5500198256 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +177,8 @@
 				652E5A6318C55A6100E63C36 /* Location.m */,
 				651AFB3A18DEA21C00986021 /* MapViewController.h */,
 				651AFB3B18DEA21C00986021 /* MapViewController.m */,
+				65AF5DD618E7329A0065333C /* NSMutableString+AddText.h */,
+				65AF5DD718E7329A0065333C /* NSMutableString+AddText.m */,
 			);
 			path = MyLocations;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 				652FF2B418C4303D0036E413 /* HudView.m in Sources */,
 				652FF2B118C3EA9F0036E413 /* CategoryPickerViewController.m in Sources */,
 				652FF2AE18C3080F0036E413 /* LocationDetailsViewController.m in Sources */,
+				65AF5DD818E7329A0065333C /* NSMutableString+AddText.m in Sources */,
 				651AFB3C18DEA21C00986021 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

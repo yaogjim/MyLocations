@@ -10,6 +10,7 @@
 #import "CategoryPickerViewController.h"
 #import "HudView.h"
 #import "Location.h"
+#import "NSMutableString+AddText.h"
 
 @interface LocationDetailsViewController () <UITextViewDelegate,
   UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -209,12 +210,16 @@
   [self.descriptionTextView resignFirstResponder];
 }
 
-- (NSString *)stringFromPlacemark:(CLPlacemark *)thePlacemark
+- (NSString *)stringFromPlacemark:(CLPlacemark *)placemark
 {
-  return [NSString stringWithFormat:@"%@ %@, %@, %@ %@, %@",
-          thePlacemark.subThoroughfare, thePlacemark.thoroughfare,
-          thePlacemark.locality, thePlacemark.administrativeArea,
-          thePlacemark.postalCode, thePlacemark.country];
+  NSMutableString *line = [NSMutableString stringWithCapacity:100];
+  [line addText:placemark.subThoroughfare withSeparator:@""];
+  [line addText:placemark.thoroughfare withSeparator:@" "];
+  [line addText:placemark.locality withSeparator:@", "];
+  [line addText:placemark.administrativeArea withSeparator:@", "];
+  [line addText:placemark.postalCode withSeparator:@" "];
+  [line addText:placemark.country withSeparator:@", "];
+  return line;
 }
 
 - (NSString *)formatDate:(NSDate *)theDate
