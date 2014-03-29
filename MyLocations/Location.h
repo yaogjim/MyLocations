@@ -17,6 +17,13 @@
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSString * locationDescription;
 @property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSNumber * photoId;
 @property (nonatomic, retain) CLPlacemark * placemark;
 
++ (NSInteger)nextPhotoId;
+
+- (BOOL)hasPhoto;
+- (NSString *)photoPath;
+- (UIImage *)photoImage;
+- (void)removePhotoFile;
 @end

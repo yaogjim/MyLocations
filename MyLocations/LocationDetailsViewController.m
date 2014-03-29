@@ -32,6 +32,8 @@
   NSString *_categoryName;
   NSDate *_date;
   UIImage *_image;
+  UIActionSheet *_actionSheet;
+  UIImagePickerController *_imagePicker;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -40,8 +42,31 @@
     _descriptionText = @"";
     _categoryName = @"No Category";
     _date = [NSDate date];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidEnterBackground)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
   }
   return self;
+}
+
+- (void)dealloc
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)applicationDidEnterBackground
+{
+  if (_imagePicker != nil) {
+    [self dismissViewControllerAnimated:NO completion:nil];
+    _imagePicker = nil;
+  }
+  if (_actionSheet != nil) {
+    [_actionSheet dismissWithClickedButtonIndex:_actionSheet.cancelButtonIndex animated:NO];
+    _actionSheet = nil;
+  }
+  [self.descriptionTextView resignFirstResponder];
 }
 
 - (IBAction)done:(id)sender
@@ -57,6 +82,7 @@
     location = [NSEntityDescription
                 insertNewObjectForEntityForName:@"Location"
                 inManagedObjectContext:self.managedObjectContext];
+    location.photoId = @-1;
   }
   location.locationDescription = _descriptionText;
   location.category = _categoryName;
@@ -64,6 +90,18 @@
   location.longitude = @(self.coordinate.longitude);
   location.date = _date;
   location.placemark = self.placemark;
+
+  if (_image != nil) {
+    if (![location hasPhoto]) {
+      location.photoId = @([Location nextPhotoId]);
+    }
+
+    NSData *data = UIImageJPEGRepresentation(_image, 0.5);
+    NSError *error;
+    if(![data writeToFile:[location photoPath] options:NSDataWritingAtomic error:&error]) {
+      NSLog(@"Error writing file: %@:", error);
+    }
+  }
 
   NSError *error;
   if (![self.managedObjectContext save:&error]) {
@@ -106,6 +144,13 @@
 
   if (self.locationToEdit != nil) {
     self.title = @"Edit Location";
+  }
+
+  if ([self.locationToEdit hasPhoto]) {
+    UIImage *existingImage = [self.locationToEdit photoImage];
+    if(existingImage != nil) {
+      [self showImage:existingImage];
+    }
   }
 
   self.descriptionTextView.text = _descriptionText;
@@ -198,32 +243,32 @@
 
 - (void)takePhoto
 {
-  UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-  imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-  imagePicker.delegate = self;
-  imagePicker.allowsEditing = YES;
-  [self presentViewController: imagePicker animated: YES completion:nil];
+  _imagePicker = [[UIImagePickerController alloc] init];
+  _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+  _imagePicker.delegate = self;
+  _imagePicker.allowsEditing = YES;
+  [self presentViewController: _imagePicker animated: YES completion:nil];
 }
 
 - (void)choosePhotoFromLibrary
 {
-  UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-  imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-  imagePicker.delegate = self;
-  imagePicker.allowsEditing = YES;
-  [self presentViewController:imagePicker animated:YES completion:nil];
+  _imagePicker = [[UIImagePickerController alloc] init];
+  _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+  _imagePicker.delegate = self;
+  _imagePicker.allowsEditing = YES;
+  [self presentViewController:_imagePicker animated:YES completion:nil];
 }
 
 - (void)showPhotoMenu
 {
   if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                                  initWithTitle:nil
-                                  delegate:self
-                                  cancelButtonTitle:@"Cancel"
-                                  destructiveButtonTitle:nil
-                                  otherButtonTitles:@"Take Photo", @"Choose From Library", nil];
-    [actionSheet showInView:self.view];
+    _actionSheet = [[UIActionSheet alloc]
+                      initWithTitle:nil
+                           delegate:self
+                  cancelButtonTitle:@"Cancel"
+             destructiveButtonTitle:nil
+                  otherButtonTitles:@"Take Photo", @"Choose From Library", nil];
+    [_actionSheet showInView:self.view];
   } else {
     [self choosePhotoFromLibrary];
   }
@@ -299,11 +344,13 @@
   [self.tableView reloadData];
 
   [self dismissViewControllerAnimated:YES completion:nil];
+  _imagePicker = nil;
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker
 {
   [self dismissViewControllerAnimated:YES completion:nil];
+  _imagePicker = nil;
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -315,6 +362,7 @@
   } else if (buttonIndex == 1) {
     [self choosePhotoFromLibrary];
   }
+  _actionSheet = nil;
 }
 
 @end

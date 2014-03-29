@@ -88,6 +88,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
   if (editingStyle == UITableViewCellEditingStyleDelete) {
     Location * location = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
+    [location removePhotoFile];
     [self.managedObjectContext deleteObject:location];
 
     NSError *error;
