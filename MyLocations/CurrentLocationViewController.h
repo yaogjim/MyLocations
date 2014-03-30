@@ -17,5 +17,9 @@
 @property (nonatomic, weak) IBOutlet UIButton *getButton;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
+@property (nonatomic, weak) IBOutlet UILabel *latitudeTextLabel;
+@property (nonatomic, weak) IBOutlet UILabel *longitudeTextLabel;
+@property (nonatomic, weak) IBOutlet UIView *containerView;
+
 - (IBAction)getLocation:(id)sender;
 @end

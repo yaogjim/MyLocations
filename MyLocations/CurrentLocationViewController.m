@@ -203,6 +203,9 @@
     } else {
       self.addressLabel.text = @"No Address Found";
     }
+
+    self.latitudeTextLabel.hidden = NO;
+    self.longitudeTextLabel.hidden = NO;
   } else {
     self.latitudeLabel.text = @"";
     self.longitudeLabel.text = @"";
@@ -224,6 +227,9 @@
       statusMessage = @"Press the Button to Start";
     }
     self.messageLabel.text = statusMessage;
+
+    self.latitudeTextLabel.hidden = YES;
+    self.longitudeTextLabel.hidden = YES;
   }
 }
 
