@@ -35,6 +35,8 @@
 		65AF5DD818E7329A0065333C /* NSMutableString+AddText.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AF5DD718E7329A0065333C /* NSMutableString+AddText.m */; };
 		65AF5DDB18E755590065333C /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AF5DDA18E755590065333C /* MyTabBarController.m */; };
 		65AF5DDE18E757390065333C /* MyNavigationControlleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AF5DDD18E757390065333C /* MyNavigationControlleViewController.m */; };
+		65AF5DE018E7F0440065333C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AF5DDF18E7F0440065333C /* AudioToolbox.framework */; };
+		65AF5DE518E7F1B50065333C /* Sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 65AF5DE418E7F1B50065333C /* Sound.caf */; };
 		65F2B3EE18D56E5500198256 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F2B3ED18D56E5500198256 /* LocationCell.m */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +94,8 @@
 		65AF5DDA18E755590065333C /* MyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBarController.m; sourceTree = "<group>"; };
 		65AF5DDC18E757390065333C /* MyNavigationControlleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigationControlleViewController.h; sourceTree = "<group>"; };
 		65AF5DDD18E757390065333C /* MyNavigationControlleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavigationControlleViewController.m; sourceTree = "<group>"; };
+		65AF5DDF18E7F0440065333C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		65AF5DE418E7F1B50065333C /* Sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound.caf; sourceTree = "<group>"; };
 		65F2B3EC18D56E5500198256 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		65F2B3ED18D56E5500198256 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65AF5DE018E7F0440065333C /* AudioToolbox.framework in Frameworks */,
 				651AFB3918DEA15000986021 /* MapKit.framework in Frameworks */,
 				652E5A5518C4E86A00E63C36 /* CoreData.framework in Frameworks */,
 				65197DD118C2AF1A005C8E50 /* CoreLocation.framework in Frameworks */,
@@ -145,6 +150,7 @@
 		65197D9718C297F7005C8E50 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65AF5DDF18E7F0440065333C /* AudioToolbox.framework */,
 				651AFB3818DEA15000986021 /* MapKit.framework */,
 				652E5A5418C4E86A00E63C36 /* CoreData.framework */,
 				65197DD018C2AF1A005C8E50 /* CoreLocation.framework */,
@@ -159,6 +165,7 @@
 		65197D9E18C297F7005C8E50 /* MyLocations */ = {
 			isa = PBXGroup;
 			children = (
+				65AF5DE318E7F1B50065333C /* Sound */,
 				65197DA718C297F7005C8E50 /* AppDelegate.h */,
 				65197DA818C297F7005C8E50 /* AppDelegate.m */,
 				65F2B3EC18D56E5500198256 /* LocationCell.h */,
@@ -220,6 +227,14 @@
 				65197DC318C297F7005C8E50 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		65AF5DE318E7F1B50065333C /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				65AF5DE418E7F1B50065333C /* Sound.caf */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +315,7 @@
 			files = (
 				65197DB418C297F7005C8E50 /* Images.xcassets in Resources */,
 				65197DA318C297F7005C8E50 /* InfoPlist.strings in Resources */,
+				65AF5DE518E7F1B50065333C /* Sound.caf in Resources */,
 				65197DAC18C297F7005C8E50 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

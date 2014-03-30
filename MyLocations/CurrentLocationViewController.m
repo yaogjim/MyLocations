@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Two Cavemen LLC. All rights reserved.
 //
 
+#import <AudioToolbox/AudioServices.h>
 #import "CurrentLocationViewController.h"
 #import "LocationDetailsViewController.h"
 #import "NSMutableString+AddText.h"
@@ -32,6 +33,8 @@
   BOOL _logoVisible;
 
   UIActivityIndicatorView *_spinner;
+
+  SystemSoundID _soundID;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -46,9 +49,9 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-
   self.tabBarController.delegate = self;
   self.tabBarController.tabBar.translucent = NO;
+  [self loadSoundEffect];
 }
 
 - (void)viewWillLayoutSubviews
@@ -236,6 +239,10 @@
 
         _lastGeocodingError = error;
         if(error == nil && [placemarks count] > 0) {
+          if (_placemark == nil) {
+            NSLog(@"FIRST TIME!");
+            [self playSoundEffect];
+          }
           _placemark = [placemarks lastObject];
         } else {
           _placemark = nil;
@@ -390,6 +397,38 @@
 {
   tabBarController.tabBar.translucent = (viewController != self);
   return YES;
+}
+
+#pragma mark - Sound Effect
+
+- (void)loadSoundEffect
+{
+  NSString *path = [[NSBundle mainBundle] pathForResource:@"Sound.caf" ofType:nil];
+
+  NSURL *fileURL = [NSURL fileURLWithPath:path isDirectory:NO];
+  if (fileURL == nil) {
+    NSLog(@"NSURL is nil for path: %@", path);
+    return;
+  }
+
+  OSStatus error = AudioServicesCreateSystemSoundID(
+                                                    (__bridge CFURLRef)fileURL, &_soundID);
+  if (error != kAudioServicesNoError) {
+    NSLog(@"Error code %ld loading sound at path: %@", error, path);
+    return;
+  }
+
+}
+
+- (void)unloadSoundEffect
+{
+  AudioServicesDisposeSystemSoundID(_soundID);
+  _soundID = 0;
+}
+
+- (void)playSoundEffect
+{
+  AudioServicesPlaySystemSound(_soundID);
 }
 
 @end
